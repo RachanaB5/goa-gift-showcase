@@ -134,37 +134,64 @@ function Index() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
     const onScroll = () => {
-      if (!heroRef.current) return;
-      const y = window.scrollY;
-      heroRef.current.style.setProperty("--sy", String(y * 0.25));
+      if (!heroRef.current || !mq.matches) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      // parallax only while hero is on screen; negative so image drifts up
+      const offset = Math.max(-80, Math.min(80, -rect.top * 0.12));
+      heroRef.current.style.setProperty("--sy", String(offset));
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-brand-paper font-sans text-brand-deep overflow-x-hidden">
       <style>{`
-        [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+        [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
         [data-reveal].is-visible{opacity:1;transform:none}
         [data-reveal-delay="1"]{transition-delay:.1s}
-        [data-reveal-delay="2"]{transition-delay:.2s}
-        [data-reveal-delay="3"]{transition-delay:.3s}
+        [data-reveal-delay="2"]{transition-delay:.22s}
+        [data-reveal-delay="3"]{transition-delay:.34s}
         @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-        .marquee-track{animation:marquee 38s linear infinite}
-        @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-        .floaty{animation:floaty 6s ease-in-out infinite}
+        .marquee-track{animation:marquee 42s linear infinite}
+        @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-12px) rotate(2deg)} }
+        .floaty{animation:floaty 7s ease-in-out infinite}
         @keyframes spinSlow { to { transform: rotate(360deg) } }
-        .spin-slow{animation:spinSlow 30s linear infinite}
+        .spin-slow{animation:spinSlow 32s linear infinite}
+        @keyframes kenburns { 0%{transform:scale(1) translate3d(0,0,0)} 100%{transform:scale(1.12) translate3d(-1%,-2%,0)} }
+        .kenburns{animation:kenburns 14s ease-out both}
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        .shimmer-text{background:linear-gradient(90deg,var(--brand-accent) 0%,oklch(0.88 0.07 70) 40%,var(--brand-accent) 60%,oklch(0.6 0.12 45) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+        @keyframes blob { 0%,100%{border-radius:42% 58% 63% 37%/45% 55% 45% 55%;transform:translate(0,0) scale(1)} 33%{border-radius:60% 40% 30% 70%/50% 60% 40% 50%;transform:translate(8px,-6px) scale(1.03)} 66%{border-radius:35% 65% 55% 45%/55% 35% 65% 45%;transform:translate(-6px,8px) scale(.98)} }
+        .blob{animation:blob 12s ease-in-out infinite}
+        @keyframes glow { 0%,100%{box-shadow:0 0 0 0 oklch(0.76 0.11 58 / .35)} 50%{box-shadow:0 0 0 24px oklch(0.76 0.11 58 / 0)} }
+        .glow-pulse{animation:glow 3s ease-out infinite}
+        @keyframes drawLine { from{stroke-dashoffset:400} to{stroke-dashoffset:0} }
+        @keyframes riseFade { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+        .rise{animation:riseFade 1.2s cubic-bezier(.2,.7,.2,1) both}
         .grain{position:relative}
         .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:multiply;background-image:radial-gradient(rgba(0,0,0,.7) 1px,transparent 1px);background-size:3px 3px}
-        .stagger:hover img{transform:scale(1.06)}
-        .stagger img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-        .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .4s ease}
+        .stagger:hover img{transform:scale(1.08)}
+        .stagger img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+        .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .5s ease}
         .link-underline:hover{background-size:100% 1px}
-        .hero-parallax{transform:translateY(calc(var(--sy,0) * 1px))}
+        @media (min-width: 1024px){
+          .hero-parallax{transform:translate3d(0,calc(var(--sy,0) * 1px),0);will-change:transform}
+        }
+        .tilt{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+        .tilt:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-4px)}
+        @media (prefers-reduced-motion: reduce){
+          *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
       `}</style>
+
 
       {/* Announcement bar */}
       <div className="bg-brand-deep text-brand-paper text-[11px] tracking-[0.25em] uppercase">
@@ -217,9 +244,10 @@ function Index() {
               data-reveal-delay="1"
               className="font-display text-[13vw] leading-[0.92] lg:text-[9.5rem] tracking-[-0.03em]"
             >
-              Gifts that <em className="italic text-brand-accent">arrive</em>
+              Gifts that <em className="italic shimmer-text">arrive</em>
               <br />
               like <span className="italic">letters.</span>
+
             </h1>
             <p data-reveal data-reveal-delay="2" className="mt-8 max-w-xl text-base lg:text-lg text-brand-deep/75 leading-relaxed">
               We are a two-woman studio in Goa hand-building hampers, bouquets and wedding
@@ -229,11 +257,12 @@ function Index() {
             <div data-reveal data-reveal-delay="3" className="mt-10 flex flex-wrap gap-4 items-center">
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-3 bg-brand-deep text-brand-paper px-7 py-4 text-[11px] uppercase tracking-[0.28em] font-semibold hover:bg-brand-accent transition-colors"
+                className="group inline-flex items-center gap-3 bg-brand-deep text-brand-paper px-7 py-4 text-[11px] uppercase tracking-[0.28em] font-semibold hover:bg-brand-accent hover:text-brand-deep transition-colors glow-pulse"
               >
                 Commission a hamper
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
+
               <a
                 href="https://wa.me/919999999999"
                 target="_blank"
@@ -259,11 +288,11 @@ function Index() {
           </div>
 
           <div ref={heroRef} className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] overflow-hidden grain bg-brand-clay/10">
+            <div className="relative aspect-[4/5] overflow-hidden grain bg-brand-clay/10 tilt">
               <img
                 src={heroHamper}
                 alt="A hand-tied wedding hamper from The Art Box Goa"
-                className="w-full h-full object-cover hero-parallax"
+                className="w-full h-full object-cover hero-parallax kenburns"
               />
               <div className="absolute top-4 left-4 bg-brand-paper/90 backdrop-blur px-3 py-2 text-[10px] uppercase tracking-[0.25em]">
                 Studio No. 07 · Assagao
@@ -272,7 +301,7 @@ function Index() {
                 Ships all over 🇮🇳
               </div>
             </div>
-            <div className="absolute -bottom-8 -left-6 w-28 h-28 rounded-full bg-brand-accent text-brand-paper flex items-center justify-center floaty shadow-lg">
+            <div className="absolute -bottom-8 -left-6 w-28 h-28 bg-brand-accent text-brand-paper flex items-center justify-center floaty shadow-xl blob">
               <div className="text-center text-[9px] uppercase tracking-[0.25em] leading-tight">
                 Hand
                 <br />
@@ -281,6 +310,7 @@ function Index() {
                 in Goa
               </div>
             </div>
+
             <svg className="absolute -top-6 -right-6 w-24 h-24 spin-slow text-brand-deep/70" viewBox="0 0 100 100">
               <defs>
                 <path id="c" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
