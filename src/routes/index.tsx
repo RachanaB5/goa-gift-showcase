@@ -244,9 +244,10 @@ function Index() {
               data-reveal-delay="1"
               className="font-display text-[13vw] leading-[0.92] lg:text-[9.5rem] tracking-[-0.03em]"
             >
-              Gifts that <em className="italic text-brand-accent">arrive</em>
+              Gifts that <em className="italic shimmer-text">arrive</em>
               <br />
               like <span className="italic">letters.</span>
+
             </h1>
             <p data-reveal data-reveal-delay="2" className="mt-8 max-w-xl text-base lg:text-lg text-brand-deep/75 leading-relaxed">
               We are a two-woman studio in Goa hand-building hampers, bouquets and wedding
