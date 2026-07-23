@@ -74,46 +74,54 @@
 :root {
   --radius: 0.625rem;
 
-  /* Luxe brand palette — bordeaux, champagne, rose gold */
-  --brand-deep: oklch(0.24 0.07 18);
-  --brand-accent: oklch(0.76 0.11 58);
-  --brand-paper: oklch(0.965 0.018 85);
-  --brand-clay: oklch(0.58 0.09 25);
+  /* The Art Box Goa — ivory / burgundy / gold */
+  --brand-ivory: oklch(0.955 0.02 78);        /* #F7F1E8 */
+  --brand-deep: oklch(0.34 0.13 18);          /* #6B1622 burgundy */
+  --brand-accent: oklch(0.73 0.135 85);       /* #C9A227 warm gold */
+  --brand-blush: oklch(0.9 0.03 12);          /* #F3D6D9 */
+  --brand-taupe: oklch(0.62 0.06 60);         /* #A9855F */
+  --brand-charcoal: oklch(0.22 0.008 40);     /* #1E1B1A */
+  --brand-forest: oklch(0.4 0.05 155);        /* #2F4A3C */
+
+  /* Back-compat aliases used across components */
+  --brand-paper: var(--brand-ivory);
+  --brand-clay: var(--brand-taupe);
 
   /* Semantic mapping */
-  --background: var(--brand-paper);
-  --foreground: var(--brand-deep);
-  --card: oklch(0.98 0.014 85);
-  --card-foreground: var(--brand-deep);
-  --popover: oklch(0.98 0.014 85);
-  --popover-foreground: var(--brand-deep);
+  --background: var(--brand-ivory);
+  --foreground: var(--brand-charcoal);
+  --card: oklch(0.98 0.012 78);
+  --card-foreground: var(--brand-charcoal);
+  --popover: oklch(0.98 0.012 78);
+  --popover-foreground: var(--brand-charcoal);
   --primary: var(--brand-deep);
-  --primary-foreground: var(--brand-paper);
-  --secondary: var(--brand-clay);
-  --secondary-foreground: var(--brand-paper);
-  --muted: oklch(0.94 0.012 85);
-  --muted-foreground: oklch(0.45 0.04 20);
+  --primary-foreground: var(--brand-ivory);
+  --secondary: var(--brand-taupe);
+  --secondary-foreground: var(--brand-ivory);
+  --muted: var(--brand-blush);
+  --muted-foreground: oklch(0.4 0.02 40);
   --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-deep);
+  --accent-foreground: var(--brand-charcoal);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.24 0.05 18 / 10%);
-  --input: oklch(0.24 0.05 18 / 14%);
+  --border: oklch(0.22 0.03 40 / 12%);
+  --input: oklch(0.22 0.03 40 / 14%);
   --ring: var(--brand-accent);
   --chart-1: var(--brand-accent);
-  --chart-2: var(--brand-clay);
+  --chart-2: var(--brand-taupe);
   --chart-3: var(--brand-deep);
-  --chart-4: oklch(0.7 0.1 60);
-  --chart-5: oklch(0.6 0.08 30);
-  --sidebar: var(--brand-paper);
-  --sidebar-foreground: var(--brand-deep);
+  --chart-4: var(--brand-blush);
+  --chart-5: var(--brand-forest);
+  --sidebar: var(--brand-ivory);
+  --sidebar-foreground: var(--brand-charcoal);
   --sidebar-primary: var(--brand-deep);
-  --sidebar-primary-foreground: var(--brand-paper);
-  --sidebar-accent: var(--brand-clay);
-  --sidebar-accent-foreground: var(--brand-paper);
-  --sidebar-border: oklch(0.24 0.05 18 / 10%);
+  --sidebar-primary-foreground: var(--brand-ivory);
+  --sidebar-accent: var(--brand-accent);
+  --sidebar-accent-foreground: var(--brand-charcoal);
+  --sidebar-border: oklch(0.22 0.03 40 / 12%);
   --sidebar-ring: var(--brand-accent);
 }
+
 
 
 .dark {
