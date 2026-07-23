@@ -134,37 +134,64 @@ function Index() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
     const onScroll = () => {
-      if (!heroRef.current) return;
-      const y = window.scrollY;
-      heroRef.current.style.setProperty("--sy", String(y * 0.25));
+      if (!heroRef.current || !mq.matches) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      // parallax only while hero is on screen; negative so image drifts up
+      const offset = Math.max(-80, Math.min(80, -rect.top * 0.12));
+      heroRef.current.style.setProperty("--sy", String(offset));
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-brand-paper font-sans text-brand-deep overflow-x-hidden">
       <style>{`
-        [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+        [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
         [data-reveal].is-visible{opacity:1;transform:none}
         [data-reveal-delay="1"]{transition-delay:.1s}
-        [data-reveal-delay="2"]{transition-delay:.2s}
-        [data-reveal-delay="3"]{transition-delay:.3s}
+        [data-reveal-delay="2"]{transition-delay:.22s}
+        [data-reveal-delay="3"]{transition-delay:.34s}
         @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-        .marquee-track{animation:marquee 38s linear infinite}
-        @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-        .floaty{animation:floaty 6s ease-in-out infinite}
+        .marquee-track{animation:marquee 42s linear infinite}
+        @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-12px) rotate(2deg)} }
+        .floaty{animation:floaty 7s ease-in-out infinite}
         @keyframes spinSlow { to { transform: rotate(360deg) } }
-        .spin-slow{animation:spinSlow 30s linear infinite}
+        .spin-slow{animation:spinSlow 32s linear infinite}
+        @keyframes kenburns { 0%{transform:scale(1) translate3d(0,0,0)} 100%{transform:scale(1.12) translate3d(-1%,-2%,0)} }
+        .kenburns{animation:kenburns 14s ease-out both}
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        .shimmer-text{background:linear-gradient(90deg,var(--brand-accent) 0%,oklch(0.88 0.07 70) 40%,var(--brand-accent) 60%,oklch(0.6 0.12 45) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+        @keyframes blob { 0%,100%{border-radius:42% 58% 63% 37%/45% 55% 45% 55%;transform:translate(0,0) scale(1)} 33%{border-radius:60% 40% 30% 70%/50% 60% 40% 50%;transform:translate(8px,-6px) scale(1.03)} 66%{border-radius:35% 65% 55% 45%/55% 35% 65% 45%;transform:translate(-6px,8px) scale(.98)} }
+        .blob{animation:blob 12s ease-in-out infinite}
+        @keyframes glow { 0%,100%{box-shadow:0 0 0 0 oklch(0.76 0.11 58 / .35)} 50%{box-shadow:0 0 0 24px oklch(0.76 0.11 58 / 0)} }
+        .glow-pulse{animation:glow 3s ease-out infinite}
+        @keyframes drawLine { from{stroke-dashoffset:400} to{stroke-dashoffset:0} }
+        @keyframes riseFade { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+        .rise{animation:riseFade 1.2s cubic-bezier(.2,.7,.2,1) both}
         .grain{position:relative}
         .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:multiply;background-image:radial-gradient(rgba(0,0,0,.7) 1px,transparent 1px);background-size:3px 3px}
-        .stagger:hover img{transform:scale(1.06)}
-        .stagger img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-        .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .4s ease}
+        .stagger:hover img{transform:scale(1.08)}
+        .stagger img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+        .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .5s ease}
         .link-underline:hover{background-size:100% 1px}
-        .hero-parallax{transform:translateY(calc(var(--sy,0) * 1px))}
+        @media (min-width: 1024px){
+          .hero-parallax{transform:translate3d(0,calc(var(--sy,0) * 1px),0);will-change:transform}
+        }
+        .tilt{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+        .tilt:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-4px)}
+        @media (prefers-reduced-motion: reduce){
+          *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
       `}</style>
+
 
       {/* Announcement bar */}
       <div className="bg-brand-deep text-brand-paper text-[11px] tracking-[0.25em] uppercase">
