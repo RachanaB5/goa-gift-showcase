@@ -256,7 +256,7 @@ function Index() {
           <a href="#contact" className="link-underline">Order</a>
         </div>
         <a
-          href="https://instagram.com/theartboxgoa"
+          href="https://www.instagram.com"
           target="_blank"
           rel="noopener"
           className="md:hidden text-[10px] uppercase tracking-widest text-brand-deep font-semibold"
@@ -298,7 +298,7 @@ function Index() {
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a
-                href="https://instagram.com/theartboxgoa"
+                href="https://www.instagram.com"
                 target="_blank"
                 rel="noopener"
                 className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] font-semibold link-underline text-brand-deep"
@@ -392,7 +392,7 @@ function Index() {
           {categories.map((c, i) => (
             <a
               key={c.name}
-              href="https://instagram.com/theartboxgoa"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener"
               data-reveal
@@ -511,7 +511,7 @@ function Index() {
           {celebrations.map((img, i) => (
             <a
               key={i}
-              href="https://instagram.com/theartboxgoa"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener"
               data-reveal
@@ -643,7 +643,7 @@ function Index() {
             <h2 data-reveal className="font-display text-4xl lg:text-6xl text-brand-deep">Follow the studio floor.</h2>
           </div>
           <a
-            href="https://instagram.com/theartboxgoa"
+            href="https://www.instagram.com"
             target="_blank"
             rel="noopener"
             className="inline-flex items-center gap-3 bg-brand-deep text-brand-ivory px-6 py-4 text-[11px] uppercase tracking-[0.28em] font-semibold hover:bg-brand-accent hover:text-brand-charcoal transition-colors"
@@ -655,7 +655,7 @@ function Index() {
           {[trousseauImg, bouquetImg, hamperImg, ringPlatterImg, ribbonImg, villaHamperImg, bouquetHandImg, platterImg].map((img, i) => (
             <a
               key={i}
-              href="https://instagram.com/theartboxgoa"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener"
               data-reveal
@@ -728,7 +728,7 @@ function Index() {
 
           <div className="mt-12 grid sm:grid-cols-2 gap-4 max-w-2xl">
             <a
-              href="https://instagram.com/theartboxgoa"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener"
               className="group bg-brand-ivory text-brand-deep px-8 py-6 flex items-center justify-between hover:bg-brand-deep hover:text-brand-ivory transition-colors"
@@ -788,7 +788,7 @@ function Index() {
           <div>
             <div className="text-[10px] uppercase tracking-[0.28em] opacity-60 mb-4">Elsewhere</div>
             <ul className="space-y-2 text-sm">
-              <li><a className="link-underline" href="https://instagram.com/theartboxgoa" target="_blank" rel="noopener">Instagram · @theartboxgoa</a></li>
+              <li><a className="link-underline" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram · @theartboxgoa</a></li>
               <li><a className="link-underline" href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp the studio</a></li>
               <li><a className="link-underline" href="mailto:hello@theartboxgoa.com">hello@theartboxgoa.com</a></li>
             </ul>
