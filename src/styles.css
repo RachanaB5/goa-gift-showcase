@@ -65,6 +65,12 @@
   --color-brand-accent: var(--brand-accent);
   --color-brand-paper: var(--brand-paper);
   --color-brand-clay: var(--brand-clay);
+  --color-brand-ivory: var(--brand-ivory);
+  --color-brand-blush: var(--brand-blush);
+  --color-brand-taupe: var(--brand-taupe);
+  --color-brand-charcoal: var(--brand-charcoal);
+  --color-brand-forest: var(--brand-forest);
+
 
   /* Typography */
   --font-display: "Playfair Display", ui-serif, Georgia, serif;
