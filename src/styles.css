@@ -59,77 +59,95 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand tokens — The Art Box Goa */
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-paper: var(--brand-paper);
+  --color-brand-clay: var(--brand-clay);
+
+  /* Typography */
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+
+  /* Brand palette */
+  --brand-deep: oklch(0.292 0.111 167.48);
+  --brand-accent: oklch(0.731 0.219 31.05);
+  --brand-paper: oklch(0.975 0.044 25.4);
+  --brand-clay: oklch(0.533 0.401 5.77);
+
+  /* Semantic mapping — artisanal coastal luxe */
+  --background: var(--brand-paper);
+  --foreground: var(--brand-deep);
+  --card: oklch(0.985 0.03 25.4);
+  --card-foreground: var(--brand-deep);
+  --popover: oklch(0.985 0.03 25.4);
+  --popover-foreground: var(--brand-deep);
+  --primary: var(--brand-deep);
+  --primary-foreground: var(--brand-paper);
+  --secondary: var(--brand-clay);
+  --secondary-foreground: var(--brand-paper);
+  --muted: oklch(0.94 0.02 25.4);
+  --muted-foreground: oklch(0.45 0.05 167.48);
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--brand-deep);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.292 0.05 167.48 / 8%);
+  --input: oklch(0.292 0.05 167.48 / 12%);
+  --ring: var(--brand-accent);
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--brand-clay);
+  --chart-3: var(--brand-deep);
+  --chart-4: oklch(0.7 0.1 100);
+  --chart-5: oklch(0.6 0.08 140);
+  --sidebar: var(--brand-paper);
+  --sidebar-foreground: var(--brand-deep);
+  --sidebar-primary: var(--brand-deep);
+  --sidebar-primary-foreground: var(--brand-paper);
+  --sidebar-accent: var(--brand-clay);
+  --sidebar-accent-foreground: var(--brand-paper);
+  --sidebar-border: oklch(0.292 0.05 167.48 / 8%);
+  --sidebar-ring: var(--brand-accent);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: var(--brand-deep);
+  --foreground: var(--brand-paper);
+  --card: oklch(0.25 0.08 167.48);
+  --card-foreground: var(--brand-paper);
+  --popover: oklch(0.25 0.08 167.48);
+  --popover-foreground: var(--brand-paper);
+  --primary: var(--brand-paper);
+  --primary-foreground: var(--brand-deep);
+  --secondary: var(--brand-clay);
+  --secondary-foreground: var(--brand-paper);
+  --muted: oklch(0.35 0.06 167.48);
+  --muted-foreground: oklch(0.75 0.04 25.4);
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--brand-deep);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --ring: var(--brand-accent);
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--brand-clay);
+  --chart-3: var(--brand-paper);
+  --chart-4: oklch(0.7 0.1 100);
+  --chart-5: oklch(0.6 0.08 140);
+  --sidebar: oklch(0.22 0.07 167.48);
+  --sidebar-foreground: var(--brand-paper);
+  --sidebar-primary: var(--brand-paper);
+  --sidebar-primary-foreground: var(--brand-deep);
+  --sidebar-accent: var(--brand-clay);
+  --sidebar-accent-foreground: var(--brand-paper);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-ring: var(--brand-accent);
 }
 
 @layer base {
@@ -140,5 +158,15 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
   }
 }
