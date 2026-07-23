@@ -257,11 +257,12 @@ function Index() {
             <div data-reveal data-reveal-delay="3" className="mt-10 flex flex-wrap gap-4 items-center">
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-3 bg-brand-deep text-brand-paper px-7 py-4 text-[11px] uppercase tracking-[0.28em] font-semibold hover:bg-brand-accent transition-colors"
+                className="group inline-flex items-center gap-3 bg-brand-deep text-brand-paper px-7 py-4 text-[11px] uppercase tracking-[0.28em] font-semibold hover:bg-brand-accent hover:text-brand-deep transition-colors glow-pulse"
               >
                 Commission a hamper
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
+
               <a
                 href="https://wa.me/919999999999"
                 target="_blank"
