@@ -288,11 +288,11 @@ function Index() {
           </div>
 
           <div ref={heroRef} className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] overflow-hidden grain bg-brand-clay/10">
+            <div className="relative aspect-[4/5] overflow-hidden grain bg-brand-clay/10 tilt">
               <img
                 src={heroHamper}
                 alt="A hand-tied wedding hamper from The Art Box Goa"
-                className="w-full h-full object-cover hero-parallax"
+                className="w-full h-full object-cover hero-parallax kenburns"
               />
               <div className="absolute top-4 left-4 bg-brand-paper/90 backdrop-blur px-3 py-2 text-[10px] uppercase tracking-[0.25em]">
                 Studio No. 07 · Assagao
@@ -301,7 +301,7 @@ function Index() {
                 Ships all over 🇮🇳
               </div>
             </div>
-            <div className="absolute -bottom-8 -left-6 w-28 h-28 rounded-full bg-brand-accent text-brand-paper flex items-center justify-center floaty shadow-lg">
+            <div className="absolute -bottom-8 -left-6 w-28 h-28 bg-brand-accent text-brand-paper flex items-center justify-center floaty shadow-xl blob">
               <div className="text-center text-[9px] uppercase tracking-[0.25em] leading-tight">
                 Hand
                 <br />
@@ -310,6 +310,7 @@ function Index() {
                 in Goa
               </div>
             </div>
+
             <svg className="absolute -top-6 -right-6 w-24 h-24 spin-slow text-brand-deep/70" viewBox="0 0 100 100">
               <defs>
                 <path id="c" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
