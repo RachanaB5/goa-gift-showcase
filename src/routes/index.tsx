@@ -37,9 +37,7 @@ function Index() {
     <div className="min-h-screen bg-brand-paper font-sans text-brand-deep">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-6 lg:px-8 border-b border-brand-deep/5">
-        <div className="text-[10px] uppercase tracking-[0.3em] font-medium">
-          Goa &bull; India
-        </div>
+        <div className="text-[10px] uppercase tracking-[0.3em] font-medium">Goa &bull; India</div>
         <div className="text-xl lg:text-2xl font-display italic tracking-tight">
           The Art Box Goa
         </div>
@@ -85,8 +83,8 @@ function Index() {
               <span className="italic">with</span> Intention.
             </h1>
             <p className="text-base md:text-lg max-w-sm leading-relaxed text-brand-deep/80 mb-10">
-              Bespoke hampers, artisanal bouquets, and curated wedding treasures.
-              Shipping modern Goan luxury to every corner of India.
+              Bespoke hampers, artisanal bouquets, and curated wedding treasures. Shipping modern
+              Goan luxury to every corner of India.
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -129,8 +127,7 @@ function Index() {
             <h3 className="text-3xl md:text-4xl font-display italic">Curating Moments</h3>
           </div>
           <p className="text-left md:text-right max-w-xs text-sm opacity-70">
-            From ring platters to grand trousseau packing, we elevate every ritual
-            into an art form.
+            From ring platters to grand trousseau packing, we elevate every ritual into an art form.
           </p>
         </div>
 
@@ -148,9 +145,7 @@ function Index() {
               />
             </div>
             <h4 className="text-xl font-display mb-2">Floral Art</h4>
-            <p className="text-xs uppercase tracking-widest opacity-50">
-              Custom Bouquets & Decor
-            </p>
+            <p className="text-xs uppercase tracking-widest opacity-50">Custom Bouquets & Decor</p>
           </div>
 
           {/* Category 2 */}
@@ -208,9 +203,9 @@ function Index() {
             of Goa <span className="text-brand-accent italic">Across India.</span>
           </h2>
           <p className="text-brand-deep/70 mb-8 max-w-lg">
-            Every box is a curated narrative. We believe that the art of gifting
-            lies in the details—the texture of the paper, the scent of the blooms,
-            and the precision of the arrangement.
+            Every box is a curated narrative. We believe that the art of gifting lies in the
+            details—the texture of the paper, the scent of the blooms, and the precision of the
+            arrangement.
           </p>
           <a
             href="https://instagram.com/theartboxgoa"
